@@ -3,3 +3,4 @@ terraform.tfstate
 terraform.tfstate.backup
 lock.json
 terraform-provider-google_v3.8.0_x5.exe
+gitlab
