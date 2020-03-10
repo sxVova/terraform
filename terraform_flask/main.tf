@@ -39,7 +39,6 @@ resource "google_compute_instance" "web-server" {
   metadata = {
     ssh-keys = "rasavo99:${file("~/.ssh/id_rsa.pub")}"
   }
-  metadata_startup_script = "sudo apt-get update && sudo apt-get remove docker docker-engine docker.io -y && sudo apt install docker.io -y && sudo systemctl start docker && sudo systemctl enable docker && sudo docker run -d -p 5000:5000 --name='flask' gitlab.sxvova.opensource-ukraine.org:5050/sxvova/flask-app:bc3fcda0"
   network_interface {
     network = "default"
     access_config {
