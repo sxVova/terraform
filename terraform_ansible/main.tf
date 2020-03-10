@@ -52,15 +52,4 @@ resource "google_compute_instance" "web-server" {
       private_key = file("~/.ssh/id_rsa")
     }
   }
-  provisioner "file" {
-    source      = "./gitlab"
-    destination = "./gitlab"
-    connection {
-      type        = "ssh"
-      user        = "rasavo99"
-      host        = google_compute_address.static.address
-      private_key = file("~/.ssh/id_rsa")
-    }
-  }
-  metadata_startup_script = "sudo apt update && sudo apt install software-properties-common -y && sudo apt-add-repository --yes --update ppa:ansible/ansible && sudo apt install ansible -y && sudo chmod 600 /home/rasavo99/.ssh/id_rsa && git clone https://github.com/sxVova/ansible.git /home/rasavo99/ansible && sudo mv /home/rasavo99/gitlab /home/rasavo99/ansible/group_vars/ && cd /home/rasavo99/ansible"
 }
